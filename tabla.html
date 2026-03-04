@@ -40,23 +40,23 @@ td img{
   margin:auto;
 }
 
-/* Responsive */
-@media (max-width:768px){
+/* ===== Alinear columna Club ===== */
+.col-club{
+  text-align:left;
+  font-weight:600;
+  padding-left:12px;
+}
 
-  .table th{
-    font-size:11px;
-    padding:8px 4px;
-  }
+/* ===== Resaltar columna Pts ===== */
+.col-pts{
+  background:#182a69;
+  color:white;
+  font-weight:800;
+}
 
-  .table td{
-    font-size:12px;
-    padding:8px 4px;
-  }
-
-  .table th:nth-child(n+4),
-  .table td:nth-child(n+4){
-    width:45px;
-  }
+/* Hover manteniendo resaltado */
+tr:hover .col-pts{
+  background:#0f1c4d;
 }
 
 </style>
@@ -91,7 +91,7 @@ td img{
 
 <script>
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/1BnXAjeTz-Qhdg11ALhUrfhruAQGgs33LEtzFalz29Os/gviz/tq?tqx=out:json&gid=68472640";
+const sheetURL = "PEGA_AQUI_TU_LINK_GVIZ";
 
 fetch(sheetURL)
   .then(res => res.text())
@@ -113,9 +113,13 @@ fetch(sheetURL)
 
     // 🔹 ENCABEZADOS
     const headerRow = document.createElement("tr");
-    cols.forEach(col => {
+    cols.forEach((col, index) => {
       const th = document.createElement("th");
       th.textContent = col.label;
+
+      if(index === 2) th.classList.add("col-club");
+      if(index === cols.length - 1) th.classList.add("col-pts");
+
       headerRow.appendChild(th);
     });
     thead.appendChild(headerRow);
@@ -130,7 +134,6 @@ fetch(sheetURL)
         if (!cell) {
           td.textContent = "";
         } 
-        // 🔥 SI ES COLUMNA B (LOGO)
         else if (index === 1) {
           const img = document.createElement("img");
           img.src = cell.v;
@@ -143,6 +146,9 @@ fetch(sheetURL)
           td.textContent = cell.v;
         }
 
+        if(index === 2) td.classList.add("col-club");
+        if(index === cols.length - 1) td.classList.add("col-pts");
+
         tr.appendChild(td);
       });
 
@@ -151,7 +157,7 @@ fetch(sheetURL)
 
   });
 
-</script> 
+</script>
 
 </body>
 </html>

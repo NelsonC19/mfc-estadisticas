@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabla de posiciones</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>Mi Liga 2026</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="tabla.html">Tabla de posiciones</a></li>
+      <li><a href="goleadores.html">Tabla de goleadores</a></li>
+      <li><a href="tarjetas.html">Tarjetas</a></li>
+      <li><a href="fixture.html">Fixture</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>Tabla de posiciones</h2>
+  <p>Aquí irá la tabla dinámica desde Google Sheets.</p>
+</section>
+
+</body>
+</html>

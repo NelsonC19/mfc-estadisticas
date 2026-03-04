@@ -33,6 +33,12 @@ th{
 tr:hover{
   background:#f2f2f2;
 }
+  
+/* Logos en tabla */
+td img{
+  display:block;
+  margin:auto;
+}
 </style>
 
 </head>
@@ -63,16 +69,14 @@ tr:hover{
 
 </section>
 
-
-  <script>
+<script>
 
 const sheetURL = "https://docs.google.com/spreadsheets/d/1BnXAjeTz-Qhdg11ALhUrfhruAQGgs33LEtzFalz29Os/gviz/tq?tqx=out:json&gid=68472640";
 
 fetch(sheetURL)
   .then(res => res.text())
   .then(data => {
-    
-    // 🔥 Limpiar respuesta Google
+
     const json = JSON.parse(
       data.substring(
         data.indexOf("{"),
@@ -87,7 +91,7 @@ fetch(sheetURL)
     const cols = json.table.cols;
     const rows = json.table.rows;
 
-    // Encabezados
+    // 🔹 ENCABEZADOS
     const headerRow = document.createElement("tr");
     cols.forEach(col => {
       const th = document.createElement("th");
@@ -96,20 +100,38 @@ fetch(sheetURL)
     });
     thead.appendChild(headerRow);
 
-    // Filas
+    // 🔹 FILAS
     rows.forEach(row => {
       const tr = document.createElement("tr");
-      row.c.forEach(cell => {
+
+      row.c.forEach((cell, index) => {
         const td = document.createElement("td");
-        td.textContent = cell ? cell.v : "";
+
+        if (!cell) {
+          td.textContent = "";
+        } 
+        // 🔥 SI ES COLUMNA B (LOGO)
+        else if (index === 1) {
+          const img = document.createElement("img");
+          img.src = cell.v;
+          img.style.width = "28px";
+          img.style.height = "28px";
+          img.style.objectFit = "contain";
+          td.appendChild(img);
+        } 
+        else {
+          td.textContent = cell.v;
+        }
+
         tr.appendChild(td);
       });
+
       tbody.appendChild(tr);
     });
 
   });
 
-</script>
+</script> 
 
 </body>
 </html>

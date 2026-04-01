@@ -22,41 +22,44 @@ export default function TablaPosiciones() {
   }
 
   return (
-    <div
-      className="min-h-screen flex flex-col items-center py-6 px-2 sm:px-4
-      bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white"
-    >
+    <div className="min-h-screen flex flex-col items-center py-6 px-2 sm:px-4
+      bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
+
       {/* TÍTULO */}
       <h1 className="text-2xl sm:text-4xl font-bold mb-6 text-center tracking-wide">
         Tabla de Posiciones
       </h1>
 
       {/* CARD */}
-      <div
-        className="w-full max-w-5xl bg-[#0f1f4b]/80 backdrop-blur-md
-        rounded-2xl shadow-2xl border border-white/10 overflow-hidden"
-      >
+      <div className="w-full max-w-5xl bg-[#0f1f4b]/80 backdrop-blur-md
+        rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+
         <div className="overflow-x-auto">
-          <table className="w-full text-xs sm:text-sm min-w-[650px]">
+          <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">
+
             {/* HEADER */}
             <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
               <tr className="text-center">
-                <th className="p-2 sticky left-0 bg-[#1e3a8a] z-20">Pos</th>
 
-                <th className="p-2 sticky left-[35px] bg-[#1e3a8a] z-20"></th>
+                <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">
+                  Pos
+                </th>
 
-                <th className="p-2 text-left sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
+                <th className="p-2 w-[35px] sticky left-[35px] bg-[#1e3a8a] z-20"></th>
+
+                <th className="p-2 text-left w-[120px] sm:w-[160px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
                   Equipo
                 </th>
 
-                <th className="p-2">PJ</th>
-                <th className="p-2">G</th>
-                <th className="p-2">E</th>
-                <th className="p-2">P</th>
-                <th className="p-2">GF</th>
-                <th className="p-2">GC</th>
-                <th className="p-2">DF</th>
-                <th className="p-2">Pts</th>
+                <th className="p-2 w-[40px]">PJ</th>
+                <th className="p-2 w-[40px]">G</th>
+                <th className="p-2 w-[40px]">E</th>
+                <th className="p-2 w-[40px]">P</th>
+                <th className="p-2 w-[45px]">GF</th>
+                <th className="p-2 w-[45px]">GC</th>
+                <th className="p-2 w-[45px]">DF</th>
+                <th className="p-2 w-[50px]">Pts</th>
+
               </tr>
             </thead>
 
@@ -76,6 +79,7 @@ export default function TablaPosiciones() {
                       ${i < 4 ? "bg-[#00ffff]/5" : ""}
                     `}
                   >
+
                     {/* POS */}
                     <td className="p-2 font-bold sticky left-0 bg-[#0f1f4b] z-10">
                       {pos}
@@ -94,11 +98,11 @@ export default function TablaPosiciones() {
                       )}
                     </td>
 
-                    {/* EQUIPO */}
+                    {/* EQUIPO (AHORA REALMENTE COMPACTO) */}
                     <td
-                      className="p-2 text-left whitespace-nowrap font-medium
+                      className="p-2 text-left font-medium truncate
                       sticky left-[70px] bg-[#0f1f4b] z-10 shadow-md
-                      max-w-[140px] sm:max-w-[180px] truncate"
+                      w-[120px] sm:w-[160px]"
                     >
                       {team["Club"]}
                     </td>
@@ -112,12 +116,10 @@ export default function TablaPosiciones() {
                     <td>{team["GC"]}</td>
 
                     {/* DF */}
-                    <td
-                      className={`
-                        ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
-                        ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
-                      `}
-                    >
+                    <td className={`
+                      ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
+                      ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
+                    `}>
                       {team["DF"]}
                     </td>
 
@@ -125,10 +127,12 @@ export default function TablaPosiciones() {
                     <td className="font-bold text-[#00ffff] text-sm">
                       {team["Pts."]}
                     </td>
+
                   </tr>
                 );
               })}
             </tbody>
+
           </table>
         </div>
       </div>

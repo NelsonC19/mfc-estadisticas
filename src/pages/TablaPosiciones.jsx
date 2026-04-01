@@ -30,20 +30,27 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* CARD CONTENEDORA */}
+      {/* CARD */}
       <div className="w-full max-w-5xl bg-[#0f1f4b]/80 backdrop-blur-md
         rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
 
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[700px]">
 
             {/* HEADER */}
-            <thead className="bg-[#1e3a8a] text-white uppercase text-xs">
-              <tr>
-                <th className="p-3 sticky left-0 bg-[#1e3a8a] z-20">Pos</th>
-                <th className="p-3 sticky left-[50px] bg-[#1e3a8a] z-20"></th>
-                <th className="p-3 text-left sticky left-[100px] bg-[#1e3a8a] z-20">Equipo</th>
-                
+            <thead className="bg-[#1e3a8a] uppercase text-xs tracking-wider">
+              <tr className="text-center">
+
+                <th className="p-3 sticky left-0 bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]">
+                  Pos
+                </th>
+
+                <th className="p-3 sticky left-[50px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]"></th>
+
+                <th className="p-3 text-left sticky left-[100px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]">
+                  Equipo
+                </th>
+
                 <th className="p-3">PJ</th>
                 <th className="p-3">G</th>
                 <th className="p-3">E</th>
@@ -72,27 +79,25 @@ export default function TablaPosiciones() {
                     `}
                   >
                     {/* POS */}
-                    <td className="p-3 font-bold">{pos}</td>
+                    <td className="p-3 font-bold sticky left-0 bg-[#0f1f4b] z-20 shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
+                      {pos}
+                    </td>
 
-                    {/* LOGO (TU VERSIÓN ORIGINAL — NO TOCAR) */}
-                    <td className="p-3">
+                    {/* LOGO */}
+                    <td className="p-3 sticky left-[50px] bg-[#0f1f4b] z-20 shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
                       {logo && (
                         <div className="w-6 h-6 mx-auto overflow-hidden">
                           <img
                             src={logo}
                             alt=""
-                            style={{
-                              width: "24px",
-                              height: "24px",
-                              objectFit: "contain"
-                            }}
+                            className="w-6 h-6 object-contain"
                           />
                         </div>
                       )}
                     </td>
 
                     {/* EQUIPO */}
-                    <td className="p-3 text-left whitespace-nowrap font-medium">
+                    <td className="p-3 text-left whitespace-nowrap font-medium sticky left-[100px] bg-[#0f1f4b] z-20 shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
                       {team["Club"]}
                     </td>
 

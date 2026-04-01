@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <h1 style={styles.title}>Superliga MFC 2026</h1>
+        <h1 style={styles.title}>Superliga MFC 2027</h1>
         <p style={styles.subtitle}>Estadísticas oficiales</p>
       </div>
 

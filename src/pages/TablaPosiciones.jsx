@@ -47,7 +47,7 @@ export default function TablaPosiciones() {
 
                 <th className="p-2 w-[35px] sticky left-[35px] bg-[#1e3a8a] z-20"></th>
 
-                <th className="p-2 text-left w-[120px] sm:w-[160px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
+                <th className="p-2 text-left w-[100px] sm:w-[140px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
                   Equipo
                 </th>
 
@@ -101,7 +101,7 @@ export default function TablaPosiciones() {
                     <td
                       className="p-2 text-left font-medium truncate
                       sticky left-[70px] bg-[#0f1f4b] z-10 shadow-md
-                      w-[120px] sm:w-[160px]"
+                      w-[100px] sm:w-[140px]"
                     >
                       {team["Club"]}
                     </td>

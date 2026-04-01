@@ -40,9 +40,9 @@ export default function TablaPosiciones() {
             {/* HEADER */}
             <thead className="bg-[#1e3a8a] uppercase text-xs tracking-wider">
               <tr className="text-center">
-                <th className="p-3 sticky left-0 bg-[#1e3a8a] z-30">Pos</th>
-                <th className="p-3 sticky left-[45px] bg-[#1e3a8a] z-30"></th>
-                <th className="p-3 text-left sticky left-[70px] bg-[#1e3a8a] z-30">
+                <th className="p-3 sticky left-0 bg-[#00ffff] z-30">Pos</th>
+                <th className="p-3 sticky left-[45px] bg-[#00ffff] z-30"></th>
+                <th className="p-3 text-left sticky left-[90px] bg-[#00ffff] z-30">
                   Equipo
                 </th>
                 <th className="p-3">PJ</th>
@@ -62,7 +62,7 @@ export default function TablaPosiciones() {
                 const logo = team[" "] || "";
                 const pos = team["Pos."] || team["Pos"];
 
-                const baseBg = i < 4 ? "bg-[#00ffff]/5" : "bg-transparent";
+                const baseBg = i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]";
 
                 return (
                   <tr
@@ -108,7 +108,7 @@ export default function TablaPosiciones() {
                     <td
                       className={`
                         p-3 text-left whitespace-nowrap font-medium
-                        sticky left-[70px] z-20
+                        sticky left-[90px] z-20
                         max-w-[120px] truncate
                         ${i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]"}
                         group-hover:bg-[#00ffff]/10

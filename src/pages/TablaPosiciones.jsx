@@ -6,9 +6,6 @@ export default function TablaPosiciones() {
   const URL =
     "https://opensheet.elk.sh/1BnXAjeTz-Qhdg11ALhUrfhruAQGgs33LEtzFalz29Os/Tabla";
 
-  const clipHex =
-    "[clip-path:polygon(35px_0,calc(100%-35px)_0,100%_35px,100%_calc(100%-35px),calc(100%-35px)_100%,35px_100%,0_calc(100%-35px),0_35px)]";
-
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
@@ -33,41 +30,32 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* CONTENEDOR */}
-      <div className="w-full max-w-5xl relative p-[2px]">
+      {/* 🔥 CONTENEDOR CON BORDE FUTURISTA */}
+      <div className="w-full max-w-5xl relative p-[2px] rounded-2xl overflow-hidden">
 
-        {/* 🔥 BORDE HEXAGONAL REAL */}
-        <div className={`absolute inset-0 border-2 border-cyan-400 ${clipHex}
-          shadow-[0_0_25px_rgba(0,255,255,0.6)] pointer-events-none`} />
-
-        {/* ESQUINAS GRUESAS */}
-        <div className="absolute inset-0 pointer-events-none">
-
-          <div className="absolute top-0 left-0 w-[90px] h-[6px] bg-cyan-400" />
-          <div className="absolute top-0 left-0 w-[6px] h-[90px] bg-cyan-400" />
-
-          <div className="absolute top-0 right-0 w-[90px] h-[6px] bg-cyan-400" />
-          <div className="absolute top-0 right-0 w-[6px] h-[90px] bg-cyan-400" />
-
-          <div className="absolute bottom-0 left-0 w-[90px] h-[6px] bg-cyan-400" />
-          <div className="absolute bottom-0 left-0 w-[6px] h-[90px] bg-cyan-400" />
-
-          <div className="absolute bottom-0 right-0 w-[90px] h-[6px] bg-cyan-400" />
-          <div className="absolute bottom-0 right-0 w-[6px] h-[90px] bg-cyan-400" />
-
+        {/* BORDE */}
+        <div className="absolute inset-0 pointer-events-none
+          before:absolute before:inset-0 before:rounded-2xl
+          before:border before:border-cyan-400/40
+          before:[clip-path:polygon(12px_0,calc(100%-12px)_0,100%_12px,100%_calc(100%-12px),calc(100%-12px)_100%,12px_100%,0_calc(100%-12px),0_12px)]
+          before:shadow-[0_0_20px_rgba(0,255,255,0.5)]
+          before:transition-all before:duration-500">
         </div>
 
-        {/* 🔥 AQUÍ ESTABA EL ERROR → ahora también tiene clip-path */}
-        <div className={`bg-[#0f1f4b]/80 backdrop-blur-md overflow-hidden ${clipHex}`}>
+        {/* CARD INTERNA */}
+        <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
 
-          <div className={`overflow-x-auto ${clipHex}`}>
+          <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">
 
               {/* HEADER */}
-              <thead className="uppercase text-[10px] sm:text-xs tracking-wider">
+              <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
                 <tr className="text-center">
 
-                  <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">Pos</th>
+                  <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">
+                    Pos
+                  </th>
+
                   <th className="p-2 w-[35px] sticky left-[35px] bg-[#1e3a8a] z-20"></th>
 
                   <th className="p-2 text-left w-[100px] sm:w-[140px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
@@ -89,30 +77,50 @@ export default function TablaPosiciones() {
                 </tr>
               </thead>
 
-              {/* BODY igual que el tuyo */}
+              {/* BODY */}
               <tbody>
                 {data.map((team, i) => {
                   const logo = team[" "] || "";
                   const pos = team["Pos."] || team["Pos"];
 
                   return (
-                    <tr key={i}
-                      className="border-t border-white/10 text-center hover:bg-[#00ffff]/10">
+                    <tr
+                      key={i}
+                      className="
+                        border-t border-white/10 text-center
+                        transition duration-200
+                        hover:bg-[#00ffff]/10
+                      "
+                    >
 
-                      <td className="p-2 font-bold sticky left-0 bg-[#0f1f4b] z-10">{pos}</td>
+                      {/* POS */}
+                      <td className="p-2 font-bold sticky left-0 bg-[#0f1f4b] z-10">
+                        {pos}
+                      </td>
 
+                      {/* LOGO */}
                       <td className="p-2 sticky left-[35px] bg-[#0f1f4b] z-10">
                         {logo && (
                           <div className="w-5 h-5 mx-auto">
-                            <img src={logo} className="w-full h-full object-contain" />
+                            <img
+                              src={logo}
+                              alt=""
+                              className="w-full h-full object-contain"
+                            />
                           </div>
                         )}
                       </td>
 
-                      <td className="p-2 text-left font-medium truncate sticky left-[70px] bg-[#0f1f4b] z-10 w-[100px] sm:w-[140px]">
+                      {/* EQUIPO */}
+                      <td
+                        className="p-2 text-left font-medium truncate
+                        sticky left-[70px] bg-[#0f1f4b] z-10 shadow-md
+                        w-[100px] sm:w-[140px]"
+                      >
                         {team["Club"]}
                       </td>
 
+                      {/* STATS */}
                       <td>{team["PJ"]}</td>
                       <td>{team["G"]}</td>
                       <td>{team["E"]}</td>
@@ -120,6 +128,7 @@ export default function TablaPosiciones() {
                       <td>{team["GF"]}</td>
                       <td>{team["GC"]}</td>
 
+                      {/* DF */}
                       <td className={`
                         ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
                         ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
@@ -127,7 +136,8 @@ export default function TablaPosiciones() {
                         {team["DF"]}
                       </td>
 
-                      <td className="font-bold text-[#00ffff] text-sm sticky right-0 bg-[#0f1f4b] z-10">
+                      {/* PTS */}
+                      <td className="font-bold text-[#00ffff] text-sm sticky right-0 bg-[#0f1f4b] z-10 shadow-md">
                         {team["Pts."]}
                       </td>
 

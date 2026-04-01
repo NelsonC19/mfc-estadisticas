@@ -58,7 +58,7 @@ export default function TablaPosiciones() {
                 <th className="p-2 w-[45px]">GF</th>
                 <th className="p-2 w-[45px]">GC</th>
                 <th className="p-2 w-[45px]">DF</th>
-                <th className="p-2 w-[50px]">Pts</th>
+                <th className="p-2 w-[50px] sticky right-0 bg-[#1e3a8a] z-20 shadow-md">Pts</th>
 
               </tr>
             </thead>
@@ -75,8 +75,7 @@ export default function TablaPosiciones() {
                     className={`
                       border-t border-white/10 text-center
                       transition duration-200
-                      hover:bg-[#00ffff]/10
-                      ${i < 4 ? "bg-[#00ffff]/5" : ""}
+                      hover:bg-[#00ffff]/10                      
                     `}
                   >
 
@@ -124,7 +123,7 @@ export default function TablaPosiciones() {
                     </td>
 
                     {/* PTS */}
-                    <td className="font-bold text-[#00ffff] text-sm">
+                    <td className="font-bold text-[#00ffff] text-sm sticky right-0 bg-[#0f1f4b] z-10 shadow-md">
                       {team["Pts."]}
                     </td>
 

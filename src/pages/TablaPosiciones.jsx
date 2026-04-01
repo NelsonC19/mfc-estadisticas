@@ -30,109 +30,124 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* CARD */}
-      <div className="w-full max-w-5xl bg-[#0f1f4b]/80 backdrop-blur-md
-        rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+      {/* 🔥 CONTENEDOR CON BORDE FUTURISTA */}
+      <div className="w-full max-w-5xl relative p-[2px] rounded-2xl overflow-hidden">
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">
+        {/* BORDE */}
+        <div className="absolute inset-0 pointer-events-none
+          before:absolute before:inset-0 before:rounded-2xl
+          before:border before:border-cyan-400/40
+          before:[clip-path:polygon(12px_0,calc(100%-12px)_0,100%_12px,100%_calc(100%-12px),calc(100%-12px)_100%,12px_100%,0_calc(100%-12px),0_12px)]
+          before:shadow-[0_0_20px_rgba(0,255,255,0.5)]
+          before:transition-all before:duration-500">
+        </div>
 
-            {/* HEADER */}
-            <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
-              <tr className="text-center">
+        {/* CARD INTERNA */}
+        <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
 
-                <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">
-                  Pos
-                </th>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">
 
-                <th className="p-2 w-[35px] sticky left-[35px] bg-[#1e3a8a] z-20"></th>
+              {/* HEADER */}
+              <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
+                <tr className="text-center">
 
-                <th className="p-2 text-left w-[100px] sm:w-[140px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
-                  Equipo
-                </th>
+                  <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">
+                    Pos
+                  </th>
 
-                <th className="p-2 w-[40px]">PJ</th>
-                <th className="p-2 w-[40px]">G</th>
-                <th className="p-2 w-[40px]">E</th>
-                <th className="p-2 w-[40px]">P</th>
-                <th className="p-2 w-[45px]">GF</th>
-                <th className="p-2 w-[45px]">GC</th>
-                <th className="p-2 w-[45px]">DF</th>
-                <th className="p-2 w-[50px] sticky right-0 bg-[#1e3a8a] z-20 shadow-md">Pts</th>
+                  <th className="p-2 w-[35px] sticky left-[35px] bg-[#1e3a8a] z-20"></th>
 
-              </tr>
-            </thead>
+                  <th className="p-2 text-left w-[100px] sm:w-[140px] sticky left-[70px] bg-[#1e3a8a] z-20 shadow-md">
+                    Equipo
+                  </th>
 
-            {/* BODY */}
-            <tbody>
-              {data.map((team, i) => {
-                const logo = team[" "] || "";
-                const pos = team["Pos."] || team["Pos"];
+                  <th className="p-2 w-[40px]">PJ</th>
+                  <th className="p-2 w-[40px]">G</th>
+                  <th className="p-2 w-[40px]">E</th>
+                  <th className="p-2 w-[40px]">P</th>
+                  <th className="p-2 w-[45px]">GF</th>
+                  <th className="p-2 w-[45px]">GC</th>
+                  <th className="p-2 w-[45px]">DF</th>
 
-                return (
-                  <tr
-                    key={i}
-                    className={`
-                      border-t border-white/10 text-center
-                      transition duration-200
-                      hover:bg-[#00ffff]/10                      
-                    `}
-                  >
+                  <th className="p-2 w-[50px] sticky right-0 bg-[#1e3a8a] z-20 shadow-md">
+                    Pts
+                  </th>
 
-                    {/* POS */}
-                    <td className="p-2 font-bold sticky left-0 bg-[#0f1f4b] z-10">
-                      {pos}
-                    </td>
+                </tr>
+              </thead>
 
-                    {/* LOGO */}
-                    <td className="p-2 sticky left-[35px] bg-[#0f1f4b] z-10">
-                      {logo && (
-                        <div className="w-5 h-5 mx-auto">
-                          <img
-                            src={logo}
-                            alt=""
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                      )}
-                    </td>
+              {/* BODY */}
+              <tbody>
+                {data.map((team, i) => {
+                  const logo = team[" "] || "";
+                  const pos = team["Pos."] || team["Pos"];
 
-                    {/* EQUIPO (AHORA REALMENTE COMPACTO) */}
-                    <td
-                      className="p-2 text-left font-medium truncate
-                      sticky left-[70px] bg-[#0f1f4b] z-10 shadow-md
-                      w-[100px] sm:w-[140px]"
+                  return (
+                    <tr
+                      key={i}
+                      className="
+                        border-t border-white/10 text-center
+                        transition duration-200
+                        hover:bg-[#00ffff]/10
+                      "
                     >
-                      {team["Club"]}
-                    </td>
 
-                    {/* STATS */}
-                    <td>{team["PJ"]}</td>
-                    <td>{team["G"]}</td>
-                    <td>{team["E"]}</td>
-                    <td>{team["P"]}</td>
-                    <td>{team["GF"]}</td>
-                    <td>{team["GC"]}</td>
+                      {/* POS */}
+                      <td className="p-2 font-bold sticky left-0 bg-[#0f1f4b] z-10">
+                        {pos}
+                      </td>
 
-                    {/* DF */}
-                    <td className={`
-                      ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
-                      ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
-                    `}>
-                      {team["DF"]}
-                    </td>
+                      {/* LOGO */}
+                      <td className="p-2 sticky left-[35px] bg-[#0f1f4b] z-10">
+                        {logo && (
+                          <div className="w-5 h-5 mx-auto">
+                            <img
+                              src={logo}
+                              alt=""
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        )}
+                      </td>
 
-                    {/* PTS */}
-                    <td className="font-bold text-[#00ffff] text-sm sticky right-0 bg-[#0f1f4b] z-10 shadow-md">
-                      {team["Pts."]}
-                    </td>
+                      {/* EQUIPO */}
+                      <td
+                        className="p-2 text-left font-medium truncate
+                        sticky left-[70px] bg-[#0f1f4b] z-10 shadow-md
+                        w-[100px] sm:w-[140px]"
+                      >
+                        {team["Club"]}
+                      </td>
 
-                  </tr>
-                );
-              })}
-            </tbody>
+                      {/* STATS */}
+                      <td>{team["PJ"]}</td>
+                      <td>{team["G"]}</td>
+                      <td>{team["E"]}</td>
+                      <td>{team["P"]}</td>
+                      <td>{team["GF"]}</td>
+                      <td>{team["GC"]}</td>
 
-          </table>
+                      {/* DF */}
+                      <td className={`
+                        ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
+                        ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
+                      `}>
+                        {team["DF"]}
+                      </td>
+
+                      {/* PTS */}
+                      <td className="font-bold text-[#00ffff] text-sm sticky right-0 bg-[#0f1f4b] z-10 shadow-md">
+                        {team["Pts."]}
+                      </td>
+
+                    </tr>
+                  );
+                })}
+              </tbody>
+
+            </table>
+          </div>
         </div>
       </div>
     </div>

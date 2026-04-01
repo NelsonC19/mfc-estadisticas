@@ -39,7 +39,7 @@ export default function TablaPosiciones() {
           {/* BORDE PRINCIPAL */}
           <div className="
             absolute inset-0 rounded-2xl
-            border-2 border-cyan-400
+            border-2 border-cyan-400/40
             [clip-path:polygon(22px_0,calc(100%-22px)_0,100%_22px,100%_calc(100%-22px),calc(100%-22px)_100%,22px_100%,0_calc(100%-22px),0_22px)]
             shadow-[0_0_25px_rgba(0,255,255,0.6)]
           " />

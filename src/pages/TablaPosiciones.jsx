@@ -60,11 +60,11 @@ export default function TablaPosiciones() {
         {/* 🔥 AQUÍ ESTABA EL ERROR → ahora también tiene clip-path */}
         <div className={`bg-[#0f1f4b]/80 backdrop-blur-md overflow-hidden ${clipHex}`}>
 
-          <div className="overflow-x-auto">
+          <div className={`overflow-x-auto ${clipHex}`}>
             <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">
 
               {/* HEADER */}
-              <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
+              <thead className="uppercase text-[10px] sm:text-xs tracking-wider">
                 <tr className="text-center">
 
                   <th className="p-2 w-[35px] sticky left-0 bg-[#1e3a8a] z-20">Pos</th>

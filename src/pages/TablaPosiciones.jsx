@@ -38,11 +38,12 @@ export default function TablaPosiciones() {
           <table className="w-full text-sm">
 
             {/* HEADER */}
-            <thead className="bg-[#1e3a8a] text-white uppercase text-xs tracking-wider">
-              <tr className="text-center">
-                <th className="p-3">Pos</th>
-                <th className="p-3"></th>
-                <th className="p-3 text-left">Equipo</th>
+            <thead className="bg-[#1e3a8a] text-white uppercase text-xs">
+              <tr>
+                <th className="p-3 sticky left-0 bg-[#1e3a8a] z-20">Pos</th>
+                <th className="p-3 sticky left-[50px] bg-[#1e3a8a] z-20"></th>
+                <th className="p-3 text-left sticky left-[100px] bg-[#1e3a8a] z-20">Equipo</th>
+                
                 <th className="p-3">PJ</th>
                 <th className="p-3">G</th>
                 <th className="p-3">E</th>

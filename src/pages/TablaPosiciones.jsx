@@ -36,9 +36,9 @@ export default function TablaPosiciones() {
         {/* BORDE */}
         <div className="absolute inset-0 pointer-events-none
           before:absolute before:inset-0 before:rounded-2xl
-          before:border before:border-cyan-400/40
+          before:border before:border-cyan-400
           before:[clip-path:polygon(12px_0,calc(100%-12px)_0,100%_12px,100%_calc(100%-12px),calc(100%-12px)_100%,12px_100%,0_calc(100%-12px),0_12px)]
-          before:shadow-[0_0_20px_rgba(0,255,255,0.5)]
+          before:shadow-[0_0_30px_rgba(0,255,255,0.8)]
           before:transition-all before:duration-500">
         </div>
 

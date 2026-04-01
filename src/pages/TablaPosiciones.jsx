@@ -30,41 +30,42 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* CONTENEDOR FUTURISTA */}
-      <div className="w-full max-w-5xl relative p-[2px] rounded-2xl overflow-hidden">
+      {/* CONTENEDOR HEXAGONAL */}
+      <div className="w-full max-w-5xl relative p-[2px] overflow-hidden">
 
-        {/* 🔥 BORDE FUTURISTA MEJORADO */}
+        {/* 🔥 BORDE HEXAGONAL */}
         <div className="absolute inset-0 pointer-events-none">
 
           {/* BORDE PRINCIPAL */}
           <div className="
-            absolute inset-0 rounded-2xl
+            absolute inset-0
             border-2 border-cyan-400
-            [clip-path:polygon(22px_0,calc(100%-22px)_0,100%_22px,100%_calc(100%-22px),calc(100%-22px)_100%,22px_100%,0_calc(100%-22px),0_22px)]
+            [clip-path:polygon(30px_0,calc(100%-30px)_0,100%_30px,100%_calc(100%-30px),calc(100%-30px)_100%,30px_100%,0_calc(100%-30px),0_30px)]
             shadow-[0_0_25px_rgba(0,255,255,0.6)]
           " />
 
-          {/* ESQUINAS DESTACADAS */}
-          <div className="absolute top-0 left-0 w-[60px] h-[60px]
-            border-t-2 border-l-2 border-cyan-400
-            rounded-tl-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+          {/* ESQUINAS GRUESAS */}
 
-          <div className="absolute top-0 right-0 w-[60px] h-[60px]
-            border-t-2 border-r-2 border-cyan-400
-            rounded-tr-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+          {/* TOP LEFT */}
+          <div className="absolute top-0 left-0 w-[90px] h-[6px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
+          <div className="absolute top-0 left-0 w-[6px] h-[90px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
 
-          <div className="absolute bottom-0 left-0 w-[60px] h-[60px]
-            border-b-2 border-l-2 border-cyan-400
-            rounded-bl-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+          {/* TOP RIGHT */}
+          <div className="absolute top-0 right-0 w-[90px] h-[6px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
+          <div className="absolute top-0 right-0 w-[6px] h-[90px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
 
-          <div className="absolute bottom-0 right-0 w-[60px] h-[60px]
-            border-b-2 border-r-2 border-cyan-400
-            rounded-br-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+          {/* BOTTOM LEFT */}
+          <div className="absolute bottom-0 left-0 w-[90px] h-[6px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
+          <div className="absolute bottom-0 left-0 w-[6px] h-[90px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
+
+          {/* BOTTOM RIGHT */}
+          <div className="absolute bottom-0 right-0 w-[90px] h-[6px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
+          <div className="absolute bottom-0 right-0 w-[6px] h-[90px] bg-cyan-400 shadow-[0_0_12px_#00ffff]" />
 
         </div>
 
         {/* CARD INTERNA */}
-        <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+        <div className="bg-[#0f1f4b]/80 backdrop-blur-md overflow-hidden">
 
           <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm min-w-[650px] table-fixed">

@@ -30,21 +30,19 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* CARD */}
+      {/* CARD CONTENEDORA */}
       <div className="w-full max-w-5xl bg-[#0f1f4b]/80 backdrop-blur-md
         rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
 
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[700px]">
+          <table className="w-full text-sm">
 
             {/* HEADER */}
-            <thead className="bg-[#1e3a8a] uppercase text-xs tracking-wider">
+            <thead className="bg-[#1e3a8a] text-white uppercase text-xs tracking-wider">
               <tr className="text-center">
-                <th className="p-3 sticky left-0 bg-[#00ffff] z-30">Pos</th>
-                <th className="p-3 sticky left-[45px] bg-[#00ffff] z-30"></th>
-                <th className="p-3 text-left sticky left-[90px] bg-[#00ffff] z-30">
-                  Equipo
-                </th>
+                <th className="p-3">Pos</th>
+                <th className="p-3"></th>
+                <th className="p-3 text-left">Equipo</th>
                 <th className="p-3">PJ</th>
                 <th className="p-3">G</th>
                 <th className="p-3">E</th>
@@ -62,58 +60,38 @@ export default function TablaPosiciones() {
                 const logo = team[" "] || "";
                 const pos = team["Pos."] || team["Pos"];
 
-                const baseBg = i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]";
-
                 return (
                   <tr
                     key={i}
                     className={`
-                      group border-t border-white/10 text-center
+                      border-t border-white/10 text-center
                       transition duration-200
-                      ${baseBg}
                       hover:bg-[#00ffff]/10
+                      ${i < 4 ? "bg-[#00ffff]/5" : ""}
                     `}
                   >
                     {/* POS */}
-                    <td
-                      className={`
-                        p-3 font-bold sticky left-0 z-20
-                        ${i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]"}
-                        group-hover:bg-[#00ffff]/10
-                      `}
-                    >
-                      {pos}
-                    </td>
+                    <td className="p-3 font-bold">{pos}</td>
 
-                    {/* LOGO */}
-                    <td
-                      className={`
-                        p-3 sticky left-[45px] z-20
-                        ${i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]"}
-                        group-hover:bg-[#00ffff]/10
-                      `}
-                    >
+                    {/* LOGO (TU VERSIÓN ORIGINAL — NO TOCAR) */}
+                    <td className="p-3">
                       {logo && (
                         <div className="w-6 h-6 mx-auto overflow-hidden">
                           <img
                             src={logo}
                             alt=""
-                            className="w-6 h-6 object-contain"
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              objectFit: "contain"
+                            }}
                           />
                         </div>
                       )}
                     </td>
 
                     {/* EQUIPO */}
-                    <td
-                      className={`
-                        p-3 text-left whitespace-nowrap font-medium
-                        sticky left-[90px] z-20
-                        max-w-[120px] truncate
-                        ${i < 4 ? "bg-[#00ffff]/5" : "bg-[#0f1f4b]"}
-                        group-hover:bg-[#00ffff]/10
-                      `}
-                    >
+                    <td className="p-3 text-left whitespace-nowrap font-medium">
                       {team["Club"]}
                     </td>
 
@@ -126,12 +104,10 @@ export default function TablaPosiciones() {
                     <td>{team["GC"]}</td>
 
                     {/* DF */}
-                    <td
-                      className={`
-                        ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
-                        ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
-                      `}
-                    >
+                    <td className={`
+                      ${Number(team["DF"]) > 0 ? "text-green-400" : ""}
+                      ${Number(team["DF"]) < 0 ? "text-red-400" : ""}
+                    `}>
                       {team["DF"]}
                     </td>
 

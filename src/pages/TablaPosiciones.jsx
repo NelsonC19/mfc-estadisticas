@@ -30,16 +30,37 @@ export default function TablaPosiciones() {
         Tabla de Posiciones
       </h1>
 
-      {/* 🔥 CONTENEDOR CON BORDE FUTURISTA */}
+      {/* CONTENEDOR FUTURISTA */}
       <div className="w-full max-w-5xl relative p-[2px] rounded-2xl overflow-hidden">
 
-        {/* BORDE */}
-        <div className="absolute inset-0 pointer-events-none
-          before:absolute before:inset-0 before:rounded-2xl
-          before:border before:border-cyan-400
-          before:[clip-path:polygon(12px_0,calc(100%-12px)_0,100%_12px,100%_calc(100%-12px),calc(100%-12px)_100%,12px_100%,0_calc(100%-12px),0_12px)]
-          before:shadow-[0_0_30px_rgba(0,255,255,0.8)]
-          before:transition-all before:duration-500">
+        {/* 🔥 BORDE FUTURISTA MEJORADO */}
+        <div className="absolute inset-0 pointer-events-none">
+
+          {/* BORDE PRINCIPAL */}
+          <div className="
+            absolute inset-0 rounded-2xl
+            border-2 border-cyan-400
+            [clip-path:polygon(22px_0,calc(100%-22px)_0,100%_22px,100%_calc(100%-22px),calc(100%-22px)_100%,22px_100%,0_calc(100%-22px),0_22px)]
+            shadow-[0_0_25px_rgba(0,255,255,0.6)]
+          " />
+
+          {/* ESQUINAS DESTACADAS */}
+          <div className="absolute top-0 left-0 w-[60px] h-[60px]
+            border-t-2 border-l-2 border-cyan-400
+            rounded-tl-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+
+          <div className="absolute top-0 right-0 w-[60px] h-[60px]
+            border-t-2 border-r-2 border-cyan-400
+            rounded-tr-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+
+          <div className="absolute bottom-0 left-0 w-[60px] h-[60px]
+            border-b-2 border-l-2 border-cyan-400
+            rounded-bl-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+
+          <div className="absolute bottom-0 right-0 w-[60px] h-[60px]
+            border-b-2 border-r-2 border-cyan-400
+            rounded-br-2xl shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+
         </div>
 
         {/* CARD INTERNA */}

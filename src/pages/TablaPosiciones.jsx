@@ -45,9 +45,9 @@ export default function TablaPosiciones() {
                   Pos
                 </th>
 
-                <th className="p-3 sticky left-[45px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]"></th>
+                <th className="p-3 sticky left-[40px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]"></th>
 
-                <th className="p-3 text-left sticky left-[90px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]">
+                <th className="p-3 text-left sticky left-[80px] bg-[#1e3a8a] z-30 shadow-[2px_0_5px_rgba(0,0,0,0.4)]">
                   Equipo
                 </th>
 
@@ -84,7 +84,7 @@ export default function TablaPosiciones() {
                     </td>
 
                     {/* LOGO */}
-                    <td className="p-3 sticky left-[45px] bg-[#0f1f4b] z-20 shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
+                    <td className="p-3 sticky left-[40px] bg-[#0f1f4b] z-20 shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
                       {logo && (
                         <div className="w-6 h-6 mx-auto overflow-hidden">
                           <img
@@ -97,7 +97,7 @@ export default function TablaPosiciones() {
                     </td>
 
                     {/* EQUIPO */}
-                    <td className="p-3 text-left whitespace-nowrap font-medium sticky left-[90px] bg-[#0f1f4b] z-20 max-w-[120px] shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
+                    <td className="p-3 text-left whitespace-nowrap font-medium sticky left-[80px] bg-[#0f1f4b] z-20 max-w-[120px] shadow-[2px_0_5px_rgba(0,0,0,0.3)]">
                       {team["Club"]}
                     </td>
 

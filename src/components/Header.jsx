@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Trophy, Table, Calendar, ShieldAlert, Home } from "lucide-react";
+// import { Trophy, Table, Calendar, ShieldAlert, Home } from "lucide-react";
 
 export default function Header() {
   const location = useLocation();

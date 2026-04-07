@@ -1,15 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-// import { Trophy, Table, Calendar, ShieldAlert, Home } from "lucide-react";
 
 export default function Header() {
   const location = useLocation();
 
   const menu = [
-    { name: "Inicio", path: "/", icon: Home },
-    { name: "Tabla", path: "/tabla", icon: Table },
-    { name: "Goleadores", path: "/goleadores", icon: Trophy },
-    { name: "Fixture", path: "/fixture", icon: Calendar },
-    { name: "Tarjetas", path: "/tarjetas", icon: ShieldAlert },
+    { name: "Inicio", path: "/", icon: "🏠" },
+    { name: "Tabla", path: "/posiciones", icon: "📊" },
+    { name: "Goleadores", path: "/goleadores", icon: "⚽" },
+    { name: "Fixture", path: "/fixture", icon: "📅" },
+    { name: "Tarjetas", path: "/tarjetas", icon: "🟥" },
   ];
 
   return (
@@ -21,10 +20,9 @@ export default function Header() {
           ⚽ MFC Estadísticas
         </h1>
 
-        {/* Menú */}
+        {/* Menú desktop */}
         <nav className="hidden md:flex gap-4">
           {menu.map((item) => {
-            const Icon = item.icon;
             const isActive = location.pathname === item.path;
 
             return (
@@ -32,12 +30,13 @@ export default function Header() {
                 key={item.name}
                 to={item.path}
                 className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-300 
-                  ${isActive 
-                    ? "bg-cyan-500/20 text-cyan-300 shadow-md" 
-                    : "text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
+                  ${
+                    isActive
+                      ? "bg-cyan-500/20 text-cyan-300 shadow-md"
+                      : "text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
                   }`}
               >
-                <Icon size={18} />
+                <span>{item.icon}</span>
                 {item.name}
               </Link>
             );
@@ -48,7 +47,6 @@ export default function Header() {
       {/* Menú móvil */}
       <div className="md:hidden flex justify-around py-2 border-t border-cyan-500/20">
         {menu.map((item) => {
-          const Icon = item.icon;
           const isActive = location.pathname === item.path;
 
           return (
@@ -58,7 +56,7 @@ export default function Header() {
               className={`flex flex-col items-center text-xs transition 
                 ${isActive ? "text-cyan-400" : "text-gray-400"}`}
             >
-              <Icon size={20} />
+              <span className="text-lg">{item.icon}</span>
               {item.name}
             </Link>
           );

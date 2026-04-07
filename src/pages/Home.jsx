@@ -239,7 +239,7 @@ const styles = {
   },
   cardSubtitle: {
     fontSize: "13px",
-    opacity: 0.8",
+    opacity: 0.8,
     lineHeight: "1.3",
     fontStyle: "italic",
     color: "#ffffff",

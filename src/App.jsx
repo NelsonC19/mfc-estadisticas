@@ -4,13 +4,11 @@ import TablaPosiciones from "./pages/TablaPosiciones";
 import TablaGoleadores from "./pages/TablaGoleadores";
 import Fixture from "./pages/Fixture";
 import Tarjetas from "./pages/Tarjetas";
-import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
-
       <Header />
 
       <Routes>
@@ -20,9 +18,6 @@ function App() {
         <Route path="/fixture" element={<Fixture />} />
         <Route path="/tarjetas" element={<Tarjetas />} />
       </Routes>
-
-      <MobileNav />
-
     </BrowserRouter>
   );
 }

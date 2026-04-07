@@ -9,21 +9,21 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+
       <Header />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/posiciones" element={<TablaPosiciones />} />
-          <Route path="/goleadores" element={<TablaGoleadores />} />
-          <Route path="/fixture" element={<Fixture />} />
-          <Route path="/tarjetas" element={<Tarjetas />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/posiciones" element={<TablaPosiciones />} />
+        <Route path="/goleadores" element={<TablaGoleadores />} />
+        <Route path="/fixture" element={<Fixture />} />
+        <Route path="/tarjetas" element={<Tarjetas />} />
+      </Routes>
 
       <MobileNav />
-    </>
+
+    </BrowserRouter>
   );
 }
 

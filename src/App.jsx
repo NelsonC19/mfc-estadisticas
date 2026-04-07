@@ -11,19 +11,17 @@ function App() {
   return (
     <>
       <Header />
-      
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/posiciones" element={<TablaPosiciones />} />
-        <Route path="/goleadores" element={<TablaGoleadores />} />
-        <Route path="/fixture" element={<Fixture />} />
-        <Route path="/tarjetas" element={<Tarjetas />} />
-      </Routes>
-    </BrowserRouter>
-    <>
-      {/* Tus rutas */}
-      
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/posiciones" element={<TablaPosiciones />} />
+          <Route path="/goleadores" element={<TablaGoleadores />} />
+          <Route path="/fixture" element={<Fixture />} />
+          <Route path="/tarjetas" element={<Tarjetas />} />
+        </Routes>
+      </BrowserRouter>
+
       <MobileNav />
     </>
   );

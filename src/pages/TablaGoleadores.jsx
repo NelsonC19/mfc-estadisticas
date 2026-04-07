@@ -33,7 +33,7 @@ export default function TablaGoleadores() {
       {/* CONTENEDOR FUTURISTA */}
       <div className="w-full max-w-3xl relative p-[2px] rounded-2xl overflow-hidden">
 
-        {/* 🔥 BORDE FUTURISTA */}
+        {/* BORDE FUTURISTA */}
         <div className="absolute inset-0 pointer-events-none">
 
           {/* BORDE PRINCIPAL */}

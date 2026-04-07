@@ -4,7 +4,7 @@ import TablaPosiciones from "./pages/TablaPosiciones";
 import TablaGoleadores from "./pages/TablaGoleadores";
 import Fixture from "./pages/Fixture";
 import Tarjetas from "./pages/Tarjetas";
-// import MobileNav from "./components/MobileNav";
+import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      {/* <MobileNav /> */}
+      <MobileNav />
     </>
   );
 }

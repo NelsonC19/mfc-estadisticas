@@ -13,14 +13,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[#0f172a]/80 border-b border-cyan-500/20 shadow-lg">
+      
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         
-        {/* Logo / Título */}
+        {/* Logo */}
         <h1 className="text-xl md:text-2xl font-bold text-cyan-400 tracking-wide">
           ⚽ MFC Estadísticas
         </h1>
 
-        {/* Menú desktop */}
+        {/* SOLO DESKTOP */}
         <nav className="hidden md:flex gap-4">
           {menu.map((item) => {
             const isActive = location.pathname === item.path;
@@ -44,24 +45,6 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Menú móvil */}
-      <div className="md:hidden flex justify-around py-2 border-t border-cyan-500/20">
-        {menu.map((item) => {
-          const isActive = location.pathname === item.path;
-
-          return (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`flex flex-col items-center text-xs transition 
-                ${isActive ? "text-cyan-400" : "text-gray-400"}`}
-            >
-              <span className="text-lg">{item.icon}</span>
-              {item.name}
-            </Link>
-          );
-        })}
-      </div>
     </header>
   );
 }

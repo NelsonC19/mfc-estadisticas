@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   Home,
   Trophy,
-  BarChart3,
+  Users,
   Calendar,
   ShieldAlert,
 } from "lucide-react";
@@ -13,8 +13,8 @@ export default function MobileNav() {
   const [activeWave, setActiveWave] = useState(null);
 
   const menu = [
-    { name: "Tabla", path: "/posiciones", icon: BarChart3 },
-    { name: "Goleadores", path: "/goleadores", icon: Trophy },
+    { name: "Tabla", path: "/posiciones", icon: Trophy },
+    { name: "Goleadores", path: "/goleadores", icon: Users },
     { name: "Inicio", path: "/", icon: Home, center: true },
     { name: "Fixture", path: "/fixture", icon: Calendar },
     { name: "Tarjetas", path: "/tarjetas", icon: ShieldAlert },
@@ -22,11 +22,9 @@ export default function MobileNav() {
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
-      
-      {/* Fondo blur */}
+
       <div className="absolute inset-0 bg-[#0f172a]/80 backdrop-blur-xl border-t border-cyan-500/20"></div>
 
-      {/* Contenedor */}
       <div className="relative flex justify-around items-end py-2">
 
         {menu.map((item, i) => {
@@ -39,7 +37,7 @@ export default function MobileNav() {
               to={item.path}
               onClick={() => {
                 setActiveWave(i);
-                setTimeout(() => setActiveWave(null), 350);
+                setTimeout(() => setActiveWave(null), 300);
               }}
               className={`relative flex flex-col items-center text-xs transition-all duration-300 ${
                 isActive ? "text-cyan-400" : "text-gray-400"
@@ -57,7 +55,6 @@ export default function MobileNav() {
 
               <span className="mt-1">{item.name}</span>
 
-              {/* 🌊 EFECTO ONDA */}
               {activeWave === i && (
                 <span className="absolute w-10 h-10 bg-cyan-400/30 rounded-full animate-ping"></span>
               )}
@@ -66,15 +63,14 @@ export default function MobileNav() {
         })}
       </div>
 
-      {/* Animación */}
       <style>
         {`
           @keyframes bounceSoft {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
           }
           .animate-bounceSoft {
-            animation: bounceSoft 0.35s ease;
+            animation: bounceSoft 0.3s ease;
           }
         `}
       </style>

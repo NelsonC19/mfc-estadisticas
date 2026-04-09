@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <div className="min-h-screen pt-40 bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white p-6 pb-24 flex flex-col items-center">
 
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-6">
+      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-18 md:gap-6">
 
         {/* 🔥 ÚLTIMOS PARTIDOS */}
         <div>

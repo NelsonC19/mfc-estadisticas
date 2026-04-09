@@ -15,20 +15,20 @@ export default function TablaPosiciones() {
 
   if (data.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a1124]">
+      <div className="min-h-screen pt-30 flex items-center justify-center bg-[#0a1124]">
         <p className="text-white animate-pulse">Cargando tabla...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-6 px-2 sm:px-4
+    <div className="min-h-screen pt-30 flex flex-col items-center py-6 px-2 sm:px-4
       bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
 
       {/* TÍTULO */}
-      <h1 className="text-2xl sm:text-4xl font-bold mb-6 text-center tracking-wide">
-        Tabla de Posiciones
-      </h1>
+        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_2px_#22d3ee]">
+          Tabla de Posiciones
+        </div>
 
       {/* CONTENEDOR FUTURISTA */}
       <div className="w-full max-w-5xl relative p-[2px] rounded-2xl overflow-hidden">

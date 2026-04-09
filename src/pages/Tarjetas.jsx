@@ -22,23 +22,23 @@ export default function Tarjetas() {
 
   if (rojas.length === 0 && amarillas.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a1124]">
+      <div className="min-h-screen pt-30 flex items-center justify-center bg-[#0a1124]">
         <p className="text-white animate-pulse">Cargando tarjetas...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 px-4
+    <div className="min-h-screen pt-30 flex flex-col items-center py-10 px-4
       bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
 
-      <h1 className="text-4xl font-bold mb-10 text-center tracking-wide">
-        Tarjetas
-      </h1>
+        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-7 rounded-t-xl tracking-wider drop-shadow-[0_0_2px_#22d3ee]">
+          Tarjetas
+        </div>
 
       {/* 🟥 ROJAS */}
       <div className="w-full max-w-4xl mb-10">
-        <h2 className="text-xl font-semibold mb-4 text-red-400">
+        <h2 className="text-xl font-semibold mb-4 pb-3 text-red-400">
           🟥 Tarjetas Rojas
         </h2>
 
@@ -122,7 +122,7 @@ export default function Tarjetas() {
 
       {/* 🟨 AMARILLAS */}
       <div className="w-full max-w-4xl">
-        <h2 className="text-xl font-semibold mb-4 text-yellow-400">
+        <h2 className="text-xl font-semibold mb-4 pb-3 text-yellow-400">
           🟨 Tarjetas Amarillas
         </h2>
 

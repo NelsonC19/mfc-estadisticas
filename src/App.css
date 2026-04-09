@@ -182,3 +182,11 @@
     border-right-color: var(--border);
   }
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  overscroll-behavior: none;
+}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function Fixture() {
   const [data, setData] = useState([]);
   const [fechaActiva, setFechaActiva] = useState(1);
-  const [tab, setTab] = useState("ida"); // 🔥 TAB ACTIVO
+  const [tab, setTab] = useState("ida");
 
   const URL =
     "https://opensheet.elk.sh/1BnXAjeTz-Qhdg11ALhUrfhruAQGgs33LEtzFalz29Os/Resultados";
@@ -15,27 +15,23 @@ export default function Fixture() {
       .catch((err) => console.error(err));
   }, []);
 
-  // 🔥 TRANSFORMACIÓN (TU VERSIÓN QUE YA FUNCIONA)
-  const partidos = data.map((row, index) => {
-    const v = Object.values(row);
+  // ✅ TRANSFORMACIÓN CORRECTA (CON BONUS)
+  const partidos = data.map((row) => ({
+    fecha: Number(row.Fecha?.replace("Fecha ", "")) || 0,
+    titulo: row.FechaTexto || "",
 
-    return {
-      fecha: Math.floor(index / 4) + 1, // 🔥 4 partidos por fecha
-      titulo: v[0],
+    local: row.Local || "",
+    logoLocal: row.LogoLocal?.trim() || "",
 
-      local: v[1],
-      logoLocal: v[2]?.trim(),
+    resLocal: row.ResLocal ?? "",
+    sep: row.Sep || "-",
+    resVisita: row.ResVisita ?? "",
 
-      resLocal: v[4],
-      sep: v[5] || "-",
-      resVisita: v[6],
+    logoVisita: row.LogoVisita?.trim() || "",
+    visita: row.Visita || "",
+  }));
 
-      logoVisita: v[7]?.trim(),
-      visita: v[8],
-    };
-  });
-
-  // 🔥 FILTRAR SEGÚN TAB
+  // 🔥 FILTRO IDA / VUELTA
   const rangoFechas =
     tab === "ida"
       ? [1, 2, 3, 4, 5, 6, 7]
@@ -49,95 +45,132 @@ export default function Fixture() {
     (p) => p.fecha === fechaActiva
   );
 
+  // ⏳ LOADING
   if (data.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a1124] text-white">
+      <div className="min-h-screen pt-40 flex items-center justify-center bg-[#0a1124] text-white">
         Cargando fixture...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white py-10 px-4">
+    <div className="min-h-screen pt-30 bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white py-10 px-4">
 
-      {/* TITULO */}
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">
-        📅 Fixture
-      </h1>
+      {/* 🔥 TITULO */}     
+        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_2px_#22d3ee]">
+          Fixture
+        </div>
 
-      {/* 🔥 TABS */}
-      <div className="flex gap-4 justify-center mb-6">
-        <button
-          onClick={() => {
-            setTab("ida");
-            setFechaActiva(1);
-          }}
-          className={`px-6 py-2 rounded-full font-bold transition
-            ${
-              tab === "ida"
-                ? "bg-[#00ffff] text-black"
-                : "bg-white/10 hover:bg-white/20"
-            }`}
-        >
-          IDA
-        </button>
+      {/* 🔥 TABS PREMIUM */}
+      <div className="flex justify-center mb-8">
+        <div className="flex bg-white/5 backdrop-blur-lg p-1 rounded-full border border-white/10 shadow-inner">
 
-        <button
-          onClick={() => {
-            setTab("vuelta");
-            setFechaActiva(8);
-          }}
-          className={`px-6 py-2 rounded-full font-bold transition
-            ${
-              tab === "vuelta"
-                ? "bg-[#00ffff] text-black"
-                : "bg-white/10 hover:bg-white/20"
-            }`}
-        >
-          VUELTA
-        </button>
-      </div>
-
-      {/* FECHAS */}
-      <div className="flex overflow-x-auto gap-3 mb-6 justify-center">
-        {fechas.map((f) => (
+          {/* IDA */}
           <button
-            key={f}
-            onClick={() => setFechaActiva(f)}
-            className={`
-              px-4 py-2 rounded-full text-sm font-semibold transition
+            onClick={() => {
+              setTab("ida");
+              setFechaActiva(1);
+            }}
+            className={`px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 ease-out
               ${
-                fechaActiva === f
-                  ? "bg-[#00ffff] text-black"
-                  : "bg-white/10 hover:bg-white/20"
-              }
-            `}
+                tab === "ida"
+                  ? "bg-[#00ffff] text-black shadow-[0_0_12px_#00ffff] scale-105"
+                  : "text-gray-300 hover:text-white"
+              }`}
           >
-            Fecha {f}
+            IDA
           </button>
-        ))}
+
+          {/* VUELTA */}
+          <button
+            onClick={() => {
+              setTab("vuelta");
+              setFechaActiva(8);
+            }}
+            className={`px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 ease-out
+              ${
+                tab === "vuelta"
+                  ? "bg-[#00ffff] text-black shadow-[0_0_12px_#00ffff] scale-105"
+                  : "text-gray-300 hover:text-white"
+              }`}
+          >
+            VUELTA
+          </button>
+
+        </div>
       </div>
 
-      {/* TITULO FECHA */}
+      {/* 🔥 FECHAS */}
+      <div className="flex overflow-x-auto gap-3 mb-6 px-2 py-2 justify-start md:justify-center scrollbar-hide">
+        {fechas.map((f) => {
+          const isActive = fechaActiva === f;
+
+          return (
+            <button
+              key={f}
+              onClick={() => setFechaActiva(f)}
+              className={`
+                relative px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap
+                transition-all duration-300
+
+                ${
+                  isActive
+                    ? "text-black bg-[#00ffff] shadow-[0_0_12px_#00ffff]"
+                    : "text-gray-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white"
+                }
+              `}
+            >
+              Fecha {f}
+
+              {isActive && (
+                <span className="absolute inset-0 rounded-full border border-cyan-300 animate-pulse opacity-40"></span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 🔥 TITULO FECHA */}
       {partidosFiltrados.length > 0 && (
-        <h2 className="text-center font-bold text-lg mb-6">
-          Fecha {fechaActiva} - {partidosFiltrados[0].titulo}
-        </h2>
+<h2 className="text-center mb-6 text-lg md:text-xl">
+
+  {/* FECHA (DESTACADA) */}
+  <span className="font-poppins font-extrabold text-white tracking-wide">
+    Fecha {fechaActiva}
+  </span>
+
+  {/* SEPARADOR */}
+  <span className="mx-2 text-gray-400">-</span>
+
+  {/* FECHA TEXTO (SUAVE) */}
+  <span className="font-[Poppins] font-medium text-gray-400">
+    {partidosFiltrados[0].titulo}
+  </span>
+
+</h2>
       )}
 
-      {/* PARTIDOS */}
+      {/* 🔥 PARTIDOS */}
       <div className="max-w-3xl mx-auto space-y-4">
         {partidosFiltrados.map((p, i) => (
           <div
             key={i}
             className="flex items-center justify-between bg-[#0f1f4b]/80 backdrop-blur-md
-            rounded-xl px-4 py-3 border border-white/10 shadow-md hover:scale-[1.01] transition"
+            rounded-xl px-4 py-3 border border-white/10 shadow-md hover:scale-[1.02] transition"
           >
             {/* LOCAL */}
             <div className="flex items-center gap-2 w-[40%] justify-end text-right">
-              <span className="font-semibold truncate">{p.local}</span>
+              <span className="font-semibold truncate">
+                {p.local}
+              </span>
+
               {p.logoLocal && (
-                <img src={p.logoLocal} className="w-7 h-7 object-contain" />
+                <img
+                  src={p.logoLocal}
+                  className="w-7 h-7 object-contain"
+                  onError={(e) => (e.target.style.display = "none")}
+                />
               )}
             </div>
 
@@ -151,9 +184,16 @@ export default function Fixture() {
             {/* VISITA */}
             <div className="flex items-center gap-2 w-[40%]">
               {p.logoVisita && (
-                <img src={p.logoVisita} className="w-7 h-7 object-contain" />
+                <img
+                  src={p.logoVisita}
+                  className="w-7 h-7 object-contain"
+                  onError={(e) => (e.target.style.display = "none")}
+                />
               )}
-              <span className="font-semibold truncate">{p.visita}</span>
+
+              <span className="font-semibold truncate">
+                {p.visita}
+              </span>
             </div>
           </div>
         ))}

@@ -95,8 +95,9 @@ export default function Tarjetas() {
                       className="border-t border-white/10 text-center
                         hover:bg-red-500/10 transition"
                     >
-                      <td className="p-3">
-                        <img src={r["Club"]} className="w-6 h-6 mx-auto" />
+                      <td className="px-2 py-3 w-[50px] min-w-[50px]">
+                        <img src={r["Club"]}
+                        className="w-8 h-8 object-contain mx-auto" />
                       </td>
 
                       <td className="text-left p-3 font-semibold">
@@ -180,8 +181,9 @@ export default function Tarjetas() {
                       className="border-t border-white/10 text-center
                         hover:bg-yellow-400/10 transition"
                     >
-                      <td className="p-3">
-                        <img src={r["Club"]} className="w-6 h-6 mx-auto" />
+                      <td className="px-2 py-3 w-[50px] min-w-[50px]">
+                        <img src={r["Club"]}
+                        className="w-8 h-8 object-contain mx-auto" />
                       </td>
 
                       <td className="text-left p-3 font-semibold">

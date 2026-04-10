@@ -38,7 +38,7 @@ export default function Tarjetas() {
 
       {/* 🟥 ROJAS */}
       <div className="w-full max-w-4xl mb-10">
-        <h2 className="text-xl font-semibold mb-4 pb-3 text-red-400">
+        <h2 className="!text-xl !font-[Poppins] !font-semibold mb-4 pb-3 !text-red-400">
           🟥 Tarjetas Rojas
         </h2>
 
@@ -76,7 +76,7 @@ export default function Tarjetas() {
           {/* CARD */}
           <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-[#1e3a8a] uppercase text-xs">
+              <thead className="bg-[#1e3a8a] uppercase text-base">
                 <tr className="text-center">
                   <th className="p-3"></th>
                   <th className="p-3 text-left">Jugador</th>
@@ -99,13 +99,15 @@ export default function Tarjetas() {
                         <img src={r["Club"]} className="w-6 h-6 mx-auto" />
                       </td>
 
-                      <td className="text-left p-3 font-medium">
+                      <td className="text-left p-3 font-semibold">
                         {r["Jugador"]}
                       </td>
 
-                      <td>{r["Fecha"]}</td>
+                      <td className="font-regular">
+                        {r["Fecha"]}
+                      </td>
 
-                      <td className="text-red-400 font-semibold">
+                      <td className="text-red-400 font-regular">
                         {r["Cond."]}
                       </td>
 
@@ -122,7 +124,7 @@ export default function Tarjetas() {
 
       {/* 🟨 AMARILLAS */}
       <div className="w-full max-w-4xl">
-        <h2 className="text-xl font-semibold mb-4 pb-3 text-yellow-400">
+        <h2 className="!text-xl !font-[Poppins] !font-semibold mb-4 pb-3 !text-yellow-400">
           🟨 Tarjetas Amarillas
         </h2>
 
@@ -160,7 +162,7 @@ export default function Tarjetas() {
           {/* CARD */}
           <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-[#1e3a8a] uppercase text-xs">
+              <thead className="bg-[#1e3a8a] uppercase text-base">
                 <tr className="text-center">
                   <th className="p-3"></th>
                   <th className="p-3 text-left">Jugador</th>
@@ -182,11 +184,13 @@ export default function Tarjetas() {
                         <img src={r["Club"]} className="w-6 h-6 mx-auto" />
                       </td>
 
-                      <td className="text-left p-3 font-medium">
+                      <td className="text-left p-3 font-semibold">
                         {r["Jugador"]}
                       </td>
 
-                      <td>{r["Fecha"]}</td>
+                      <td className="font-regular">
+                        {r["Fecha"]}
+                        </td>
 
                       <td className="text-cyan-400 font-semibold">
                         {r["Vuelve"]}

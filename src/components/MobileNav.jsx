@@ -21,9 +21,9 @@ export default function MobileNav() {
   ];
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+    <div className="md:hidden fixed bottom-0 left-0 w-full z-50 h-16">
 
-      <div className="absolute inset-0 bg-[#0f172a]/80 backdrop-blur-xl border-t border-cyan-500/20"></div>
+      <div className="absolute inset-0 bg-[#0f172a] border-t border-cyan-500/20"></div>
 
       <div className="relative flex justify-around items-end py-2">
 

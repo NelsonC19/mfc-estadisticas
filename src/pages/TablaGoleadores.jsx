@@ -72,7 +72,7 @@ export default function TablaGoleadores() {
             <table className="w-full text-xs sm:text-sm">
 
               {/* HEADER */}
-              <thead className="bg-[#1e3a8a] uppercase text-[10px] sm:text-xs tracking-wider">
+              <thead className="bg-[#1e3a8a] uppercase text-base sm:text-xs tracking-wider">
                 <tr className="text-center">
                   <th className="p-2">Pos</th>
                   <th className="p-2"></th>
@@ -105,7 +105,7 @@ export default function TablaGoleadores() {
                           ${i < 3 ? "bg-[#00ffff]/5" : ""}
                         `}
                       >
-                        <td className="p-2 font-bold">{pos}</td>
+                        <td className="p-2 font-regular">{pos}</td>
 
                         <td className="p-2">
                           {logo && (
@@ -119,11 +119,11 @@ export default function TablaGoleadores() {
                           )}
                         </td>
 
-                        <td className="p-2 text-left whitespace-nowrap font-medium">
+                        <td className="p-2 text-left whitespace-nowrap font-bold">
                           {nombre}
                         </td>
 
-                        <td className="font-extrabold text-[#00ffff] text-sm">
+                        <td className="font-extrabold text-[#00ffff] text-lg">
                            {goles}
                         </td>
                       </tr>

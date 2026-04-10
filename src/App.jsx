@@ -23,6 +23,7 @@ function App() {
           <Route path="/tarjetas" element={<Tarjetas />} />
         </Routes>
       </div>
+      
 
       <MobileNav />
     </BrowserRouter>

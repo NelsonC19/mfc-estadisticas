@@ -26,7 +26,7 @@ export default function TablaPosiciones() {
       bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
 
       {/* TÍTULO */}
-        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_2px_#22d3ee]">
+        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_20px_#000000]">
           Tabla de Posiciones
         </div>
 

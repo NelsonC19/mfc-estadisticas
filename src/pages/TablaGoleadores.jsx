@@ -15,18 +15,18 @@ export default function TablaGoleadores() {
 
   if (data.length === 0) {
     return (
-      <div className="min-h-screen pt-30 flex items-center justify-center bg-[#0a1124]">
+      <div className="min-h-[100dvh] pt-30 flex items-center justify-center bg-[#0a1124]">
         <p className="text-white animate-pulse">Cargando goleadores...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen pt-30 flex flex-col items-center py-6 px-2 sm:px-4
-      bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
+    <div className="min-h-[100dvh] pt-30 flex flex-col items-center py-6 px-2 sm:px-4
+      bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white"> 
 
       {/* TÍTULO */}
-        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_2px_#22d3ee]">
+        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_20px_#000000]">
           Tabla de Goleadores
         </div>
 

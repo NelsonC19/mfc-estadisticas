@@ -106,8 +106,30 @@ html, body, #root {
   height: 100%;
 }
 
+html, body {
+  background: linear-gradient(135deg, #0a1124, #182a69, #0a1124);
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   background: linear-gradient(135deg, #0a1124, #182a69, #0a1124);
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0a1124, #182a69, #0a1124);
+  background-attachment: fixed;
+}
+
+html, body {
+  background: linear-gradient(135deg, #0a1124, #182a69, #0a1124);
+}
+
+body {
+  min-height: 100dvh;
+}
+
+html {
+  overflow-y: scroll;
 }

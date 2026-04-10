@@ -47,7 +47,9 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-     <header className="fixed top-0 left-0 w-full z-50 bg-[#0f172a]/95 backdrop-blur-xl border-b border-cyan-500/10">
+         
+     
+     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-3">
       
       {/*<header
      className={`sticky top-0 z-50 transition-all duration-300
@@ -60,8 +62,7 @@ export default function Header() {
     >*/}
       
       <div
-        className={`max-w-6xl mx-auto px-4 flex items-center justify-between transition-all duration-300
-        ${scrolled ? "py-1.5" : "py-2"}  /* 🔥 MÁS BAJO */`}
+        className="w-full max-w-6xl px-4 flex items-center justify-between"
       >
         {/* LOGO */}
         <div className="flex items-center gap-2">
@@ -69,22 +70,22 @@ export default function Header() {
             src="/logo.png"
             alt="MFC Logo"
             className={`object-contain transition-all duration-300
-              ${scrolled ? "w-8 h-8" : "w-10 h-10"}`}
+              ${scrolled ? "w-11 h-11" : "w-13 h-13"}`}
             onError={(e) => (e.target.style.display = "none")}
           />
 
-          <h1 className="!font-medium !text-gray-300 !tracking-wide !text-lg"
+          {/*<h1 className="!font-medium !text-gray-300 !tracking-wide !text-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
               style={{ fontFamily: "Poppins, sans-serif" }}
           >          
             MADRUGADORES FC
-          </h1>
+          </h1>*/}
         </div>
 
         {/* NAV */}
-        <nav
-          ref={navRef}
-          className="hidden md:flex gap-1 relative bg-white/5 px-2 py-1 rounded-xl backdrop-blur-lg"
-        >
+<nav
+  ref={navRef}
+  className="hidden md:flex gap-1 relative bg-[#0f172a]/80 px-3 py-2 rounded-2xl backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+>
           {/* INDICADOR */}
           <span
             className="absolute bottom-0 left-0 h-[2px] bg-cyan-400 rounded-full transition-all duration-300"

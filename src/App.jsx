@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import MobileNav from "./components/MobileNav";
+import FloatingSponsors from "./components/FloatingSponsors";
 
 import Home from "./pages/Home";
 import TablaPosiciones from "./pages/TablaPosiciones";
@@ -24,6 +25,7 @@ function App() {
         </Routes>
       </div>
 
+      <FloatingSponsors />
       <MobileNav />
     </BrowserRouter>
   );

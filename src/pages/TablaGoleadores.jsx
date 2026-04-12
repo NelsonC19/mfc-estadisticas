@@ -69,7 +69,7 @@ export default function TablaGoleadores() {
         <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden">
 
           <div className="overflow-x-auto">
-            <table className="w-full text-xs sm:text-sm">
+            <table className="w-full text-sm sm:text-sm">
 
               {/* HEADER */}
               <thead className="bg-[#1e3a8a] uppercase text-base sm:text-xs tracking-wider">
@@ -109,17 +109,17 @@ export default function TablaGoleadores() {
 
                         <td className="p-2">
                           {logo && (
-                            <div className="w-5 h-5 mx-auto">
+                            <div className="w-10 min-w-[40px] flex justify-center">
                               <img
                                 src={logo}
                                 alt=""
-                                className="w-full h-full object-contain"
+                                className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
                               />
                             </div>
                           )}
                         </td>
 
-                        <td className="p-2 text-left whitespace-nowrap font-bold">
+                        <td className="text-left p-3 font-bold">
                           {nombre}
                         </td>
 

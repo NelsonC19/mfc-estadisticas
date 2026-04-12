@@ -18,12 +18,13 @@ export default function FloatingSponsors() {
 
   const [index, setIndex] = useState(0);
   const [showWave, setShowWave] = useState(false);
+  const [visible, setVisible] = useState(true); // 👈 control de visibilidad
 
-  // 🔁 Cambio de sponsor MÁS LENTO
+  // 🔁 Cambio de sponsor
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % sponsors.length);
-    }, 5000); // 👈 MÁS TIEMPO
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -34,50 +35,72 @@ export default function FloatingSponsors() {
 
     const timeout = setTimeout(() => {
       setShowWave(false);
-    }, 3000); // 👈 duración de onda
+    }, 3000);
 
     return () => clearTimeout(timeout);
   }, [index]);
 
+  // ❌ Si está cerrado, no renderiza nada
+  if (!visible) return null;
+
   return (
-    <a
-      href={sponsors[index].url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-[60]"
-    >
+    <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-[60]">
+      
+      {/* BOTÓN CERRAR */}
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setVisible(false);
+  }}
+  className="absolute -top-12 md:-top-13 left-1/2 
+  translate-x-[120%] md:translate-x-[160%] 
+  z-30 w-5 h-5 flex items-center justify-center 
+  rounded-full bg-black text-white text-[10px] shadow-md 
+  hover:scale-110 transition"
+>
+  ✕
+</button>
+
       {/* TEXTO */}
       <span
-        className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 text-[10px] font-bold text-cyan-400 whitespace-nowrap"
+        className="absolute -top-6 md:-top-7 left-1/2 -translate-x-1/2 z-20 text-xs font-bold text-cyan-400 whitespace-nowrap"
         style={{ textShadow: "0px 2px 4px rgba(0,0,0,0.8)" }}
       >
         Auspiciadores
       </span>
 
-      <div className="relative flex items-center justify-center">
+      {/* LINK */}
+      <a
+        href={sponsors[index].url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="relative flex items-center justify-center">
 
-        {/* ONDAS */}
-        {showWave && (
-          <>
-            <span className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full animate-wave1 z-0"></span>
-            <span className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full animate-wave2 z-0"></span>
-          </>
-        )}
+          {/* ONDAS */}
+          {showWave && (
+            <>
+              <span className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full animate-wave1 z-0"></span>
+              <span className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full animate-wave2 z-0"></span>
+            </>
+          )}
 
-        {/* BOTÓN */}
-        <div
-          className="relative z-10 w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden 
-          border-2 border-cyan-400 shadow-xl flex items-center justify-center animate-bounceSoft"
-          style={{ backgroundColor: "#182A69" }}
-        >
-          <img
-            key={index}
-            src={sponsors[index].img}
-            alt="sponsor"
-            className="w-full h-full object-contain p-1 animate-fade"
-          />
+          {/* BOTÓN */}
+          <div
+            className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden 
+            border-2 border-cyan-400 shadow-xl flex items-center justify-center animate-bounceSoft"
+            style={{ backgroundColor: "#182A69" }}
+          >
+            <img
+              key={index}
+              src={sponsors[index].img}
+              alt="sponsor"
+              className="w-full h-full object-contain p-2 animate-fade"
+            />
+          </div>
         </div>
-      </div>
+      </a>
 
       <style>
         {`
@@ -122,6 +145,6 @@ export default function FloatingSponsors() {
           }
         `}
       </style>
-    </a>
+    </div>
   );
 }

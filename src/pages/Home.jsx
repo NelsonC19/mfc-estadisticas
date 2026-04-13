@@ -105,10 +105,10 @@ export default function Home() {
         {/* 🔥 ÚLTIMOS */}
         <FuturisticFrame title="Últimos Partidos">
 
-          <h2 className="text-center my-4 flex justify-center gap-2 text-sm md:text-base">
-            <span className="font-bold">{ultimaFecha}</span>
-            <span className="text-cyan-400/70">-</span>
-            <span className="text-gray-300">{getFechaTexto(ultimos)}</span>
+          <h2 className="text-center my-4 flex justify-center gap-2  md:text-base">
+            <span className="!font-bold !text-white !text-lg !font-[Poppins]">{ultimaFecha}</span>
+            <span className="!text-cyan-400/70 !font-bold !font-[Poppins]">-</span>
+            <span className="!text-gray-300 text-lg !font-[Poppins]">{getFechaTexto(ultimos)}</span>
           </h2>
 
           <div className="space-y-3">
@@ -159,9 +159,9 @@ export default function Home() {
         <FuturisticFrame title="Próximos Partidos">
 
           <h2 className="text-center my-4 flex justify-center gap-2 text-sm md:text-base">
-            <span className="font-bold">{proximaFecha}</span>
-            <span className="text-cyan-400/70">-</span>
-            <span className="text-gray-300">{getFechaTexto(proximos)}</span>
+            <span className="!font-bold !text-white !text-lg !font-[Poppins]">{proximaFecha}</span>
+            <span className="!text-cyan-400/70 !font-bold !font-[Poppins]">-</span>
+            <span className="!text-gray-300 text-lg !font-[Poppins]">{getFechaTexto(proximos)}</span>
           </h2>
 
           <div className="space-y-3">

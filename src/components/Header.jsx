@@ -22,21 +22,21 @@ export default function Header() {
     { name: "Tarjetas", path: "/tarjetas", icon: ShieldAlert },
   ];
 
-  // 🔥 Scroll
-  {/*  useEffect(() => {
+  {/*// 🔥 Scroll efecto reducir el header
+  useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []); */}
+  }, []);*/}
 
-  // 🔥 Indicador FIX REAL
+  // 🔥 Indicador activo
   useEffect(() => {
     const activeIndex = menu.findIndex(
       (item) => item.path === location.pathname
     );
 
     if (navRef.current && activeIndex !== -1) {
-      const el = navRef.current.querySelectorAll("a")[activeIndex]; // ✅ SOLO LINKS
+      const el = navRef.current.querySelectorAll("a")[activeIndex];
       if (el) {
         setIndicatorStyle({
           width: el.offsetWidth + "px",
@@ -47,45 +47,31 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-         
-     
-     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-3">
-      
-      {/*<header
-     className={`sticky top-0 z-50 transition-all duration-300
-        ${
-          scrolled
-            ? "bg-[#0f172a]/95 backdrop-blur-xl shadow-md"
-            : "bg-[#0f172a]/80 backdrop-blur-md"
-        }
-        border-b border-cyan-500/10`} 
-    >*/}
-      
-      <div
-        className="w-full max-w-6xl px-4 flex items-center justify-between"
-      >
-        {/* LOGO */}
-        <div className="flex items-center gap-2">
+    <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-3">
+      <div className="w-full max-w-6xl px-4 flex items-center justify-between">
+        
+        {/* 🔥 LOGO CON LINK */}
+        <Link to="/" className="flex items-center gap-2 group">
           <img
             src="/logo.png"
             alt="MFC Logo"
-            className={`object-contain transition-all duration-300
-              ${scrolled ? "w-11 h-11" : "w-13 h-13"}`}
+            className={`object-contain transition-all duration-300 cursor-pointer
+              ${scrolled ? "w-10 h-10" : "w-12 h-12"}
+              group-hover:scale-105`}
             onError={(e) => (e.target.style.display = "none")}
           />
 
-          {/*<h1 className="!font-medium !text-gray-300 !tracking-wide !text-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
-              style={{ fontFamily: "Poppins, sans-serif" }}
-          >          
-            MADRUGADORES FC
-          </h1>*/}
-        </div>
+          {/* OPCIONAL: nombre del club 
+          <span className="hidden sm:block text-gray-300 text-sm tracking-wide group-hover:text-cyan-300 transition">
+            MFC
+          </span>*/}
+        </Link>
 
-        {/* NAV */}
-<nav
-  ref={navRef}
-  className="hidden md:flex gap-1 relative bg-[#0f172a]/80 px-3 py-2 rounded-2xl backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
->
+        {/* 🔥 NAV */}
+        <nav
+          ref={navRef}
+          className="hidden md:flex gap-1 relative bg-[#0f172a]/80 px-3 py-2 rounded-2xl backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+        >
           {/* INDICADOR */}
           <span
             className="absolute bottom-0 left-0 h-[2px] bg-cyan-400 rounded-full transition-all duration-300"
@@ -107,7 +93,7 @@ export default function Header() {
                       : "text-gray-400 hover:text-cyan-400"
                   }
                   ${scrolled ? "text-xs" : "text-sm"}
-                  `}
+                `}
               >
                 <Icon
                   size={scrolled ? 16 : 18}

@@ -19,7 +19,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // 🔥 FECHAS
   const fechas = [...new Set(matches.map((m) => m.Fecha))];
 
   const getNumeroFecha = (f) => {
@@ -32,7 +31,6 @@ export default function Home() {
     (a, b) => getNumeroFecha(a) - getNumeroFecha(b)
   );
 
-  // 🔥 ÚLTIMA FECHA CON RESULTADOS
   const fechasConResultados = fechasOrdenadas.filter((f) =>
     matches.some(
       (m) =>
@@ -56,144 +54,157 @@ export default function Home() {
     .filter((m) => m.Fecha === proximaFecha)
     .slice(0, 4);
 
-  // 🔥 obtener texto tipo "Sábado..."
   const getFechaTexto = (lista) =>
     lista.length > 0 ? lista[0].FechaTexto : "";
 
+  const horarios = ["6:15 h", "7:45 h", "9:15 h", "10:45 h"];
+
+  // 🔥 MARCO FUTURISTA REUTILIZABLE
+  const FuturisticFrame = ({ title, children }) => (
+    <div className="w-full relative p-[2px] rounded-2xl overflow-hidden">
+
+      {/* BORDE FUTURISTA */}
+      <div className="absolute inset-0 pointer-events-none">
+
+        <div
+          className="
+            absolute inset-0 rounded-2xl
+            border-2 border-cyan-400/40
+            [clip-path:polygon(22px_0,calc(100%-22px)_0,100%_22px,100%_calc(100%-22px),calc(100%-22px)_100%,22px_100%,0_calc(100%-22px),0_22px)]
+            shadow-[0_0_25px_rgba(0,255,255,0.5)]
+          "
+        />
+
+        {/* esquinas */}
+        <div className="absolute top-0 left-0 w-[60px] h-[60px] border-t-2 border-l-2 border-cyan-400 rounded-tl-2xl" />
+        <div className="absolute top-0 right-0 w-[60px] h-[60px] border-t-2 border-r-2 border-cyan-400 rounded-tr-2xl" />
+        <div className="absolute bottom-0 left-0 w-[60px] h-[60px] border-b-2 border-l-2 border-cyan-400 rounded-bl-2xl" />
+        <div className="absolute bottom-0 right-0 w-[60px] h-[60px] border-b-2 border-r-2 border-cyan-400 rounded-br-2xl" />
+      </div>
+
+      {/* CONTENIDO */}
+      <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden p-4">
+
+        {/* HEADER TIPO GOLEADORES */}
+        <div className="text-cyan-400 text-center font-extrabold text-xl md:text-2xl mb-4
+        drop-shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+          {title}
+        </div>
+
+        {children}
+
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen pt-40 bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white p-6 pb-24 flex flex-col items-center">
+    <div className="min-h-screen pt-24 md:pt-28 bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white px-4 pb-24 flex flex-col items-center">
 
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-18 md:gap-6">
+      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
 
-        {/* 🔥 ÚLTIMOS PARTIDOS */}
-        <div>
-          <div className="bg-[#182A69] text-cyan-400 text-center font-bold text-lg md:text-xl py-3 rounded-t-xl tracking-wide">
-            Últimos Partidos
-          </div>
+        {/* 🔥 ÚLTIMOS */}
+        <FuturisticFrame title="Últimos Partidos">
 
-          {/* 🔥 TITULO PRO */}
-<h2 className="text-center mb-4 mt-2">
+          <h2 className="text-center my-4 flex justify-center gap-2 text-sm md:text-base">
+            <span className="font-bold">{ultimaFecha}</span>
+            <span className="text-cyan-400/70">-</span>
+            <span className="text-gray-300">{getFechaTexto(ultimos)}</span>
+          </h2>
 
-  <span className="font-[Poppins] font-extrabold text-sm md:text-base text-white">
-    {ultimaFecha}
-  </span>
+          <div className="space-y-3">
+            {ultimos.map((m, i) => (
+              <div key={i} className="bg-[#111c44]/70 rounded-xl p-3 border border-white/10">
 
-  <span className="mx-2 text-gray-400 text-lg md:text-sm">-</span>
+                <div className="flex items-center justify-between">
 
-  <span className="font-[Poppins] font-medium text-lg md:text-sm text-gray-400">
-    {getFechaTexto(ultimos)}
-  </span>
+                  {/* LOCAL */}
+                  <div className="flex flex-col items-center w-[30%]">
+                    <img src={m.LogoLocal} className="w-9 h-9 object-contain mb-1" />
+                    <span className="text-sm truncate">{m.Local}</span>
+                  </div>
 
-</h2>
+                  {/* RESULTADO */}
+                  <div className="flex flex-col items-center w-[40%]">
+                    <div className="text-xl font-bold">
+                      {m.ResLocal}-{m.ResVisita}
+                    </div>
 
-          {ultimos.length === 0 ? (
-            <p className="text-center mt-4 opacity-70">
-              Cargando partidos...
-            </p>
-          ) : (
-            ultimos.map((m, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-between bg-[#0f1f4b]/80 backdrop-blur-md
-                rounded-xl px-4 py-3 mb-3 border border-white/10 shadow-md hover:scale-[1.02] transition"
-              >
-                {/* LOCAL */}
-                <div className="flex items-center gap-2 w-[40%] justify-end text-right">
-                  <span className="font-semibold text-sm truncate">
-                    {m.Local}
-                  </span>
-                  <img
-                    src={m.LogoLocal}
-                    className="w-7 h-7 object-contain"
-                    onError={(e) => (e.target.style.display = "none")}
-                  />
-                </div>
+                    {m.Transmi && (
+                      <a
+                        href={m.Transmi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 text-xs px-3 py-1 rounded-full
+                        bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition"
+                      >
+                        ▶ Ver partido
+                      </a>
+                    )}
+                  </div>
 
-                {/* SCORE */}
-                <div className="text-center font-bold text-base">
-                  {m.ResLocal}
-                  <span className="mx-1 text-gray-400">{m.Sep}</span>
-                  {m.ResVisita}
-                </div>
+                  {/* VISITA */}
+                  <div className="flex flex-col items-center w-[30%]">
+                    <img src={m.LogoVisita} className="w-9 h-9 object-contain mb-1" />
+                    <span className="text-sm truncate">{m.Visita}</span>
+                  </div>
 
-                {/* VISITA */}
-                <div className="flex items-center gap-2 w-[40%]">
-                  <img
-                    src={m.LogoVisita}
-                    className="w-7 h-7 object-contain"
-                    onError={(e) => (e.target.style.display = "none")}
-                  />
-                  <span className="font-semibold text-sm truncate">
-                    {m.Visita}
-                  </span>
                 </div>
               </div>
-            ))
-          )}
-        </div>
-
-        {/* 🔥 PRÓXIMOS PARTIDOS */}
-        <div>
-          <div className="bg-[#182A69] text-cyan-400 text-center font-bold text-lg md:text-xl py-3 rounded-t-xl tracking-wide">
-            Próximos Partidos
+            ))}
           </div>
 
-          {/* 🔥 TITULO PRO */}
-<h2 className="text-center mb-4 mt-2">
+        </FuturisticFrame>
 
-  <span className="font-[Poppins] font-extrabold text-sm md:text-base text-white">
-    {proximaFecha}
-  </span>
+        {/* 🔥 PRÓXIMOS */}
+        <FuturisticFrame title="Próximos Partidos">
 
-  <span className="mx-2 text-gray-400 text-lg md:text-sm">-</span>
+          <h2 className="text-center my-4 flex justify-center gap-2 text-sm md:text-base">
+            <span className="font-bold">{proximaFecha}</span>
+            <span className="text-cyan-400/70">-</span>
+            <span className="text-gray-300">{getFechaTexto(proximos)}</span>
+          </h2>
 
-  <span className="font-[Poppins] font-medium text-lg md:text-sm text-gray-400">
-    {getFechaTexto(proximos)}
-  </span>
+          <div className="space-y-3">
+            {proximos.map((m, i) => (
+              <div key={i} className="bg-[#111c44]/70 rounded-xl p-3 border border-white/10">
 
-</h2>
+                <div className="flex items-center justify-between">
 
-          {proximos.length === 0 ? (
-            <p className="text-center mt-4 opacity-70">
-              Cargando partidos...
-            </p>
-          ) : (
-            proximos.map((m, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-between bg-[#0f1f4b]/80 backdrop-blur-md
-                rounded-xl px-4 py-3 mb-3 border border-white/10 shadow-md hover:scale-[1.02] transition"
-              >
-                {/* LOCAL */}
-                <div className="flex items-center gap-2 w-[40%] justify-end text-right">
-                  <span className="font-semibold text-sm truncate">
-                    {m.Local}
-                  </span>
-                  <img
-                    src={m.LogoLocal}
-                    className="w-7 h-7 object-contain"
-                  />
+                  {/* LOCAL */}
+                  <div className="flex flex-col items-center w-[30%]">
+                    <img src={m.LogoLocal} className="w-9 h-9 object-contain mb-1" />
+                    <span className="text-sm truncate">{m.Local}</span>
+                  </div>
+
+                  {/* HORA 
+                  <div className="flex flex-col items-center w-[40%]">
+                    <div className="text-xs text-cyan-300 bg-cyan-400/10 px-2 py-1 rounded-md">
+                      {horarios[i] || "—"}
+                    </div>
+                  </div>*/}
+               {/* HORA */}
+                <div className="flex flex-col items-center w-[40%]">
+                  <div className="text-sm font-bold text-cyan-300">
+                    {horarios[i]}
+                  </div>
+
+                  <div className="mt-2 text-xs px-4 py-1 rounded-full bg-cyan-400/10 text-cyan-300">
+                    Club Cumbaza
+                  </div>
                 </div>
+               
+                  {/* VISITA */}
+                  <div className="flex flex-col items-center w-[30%]">
+                    <img src={m.LogoVisita} className="w-9 h-9 object-contain mb-1" />
+                    <span className="text-sm truncate">{m.Visita}</span>
+                  </div>
 
-                {/* VS */}
-                <div className="text-gray-400 font-bold text-sm">
-                  vs
-                </div>
-
-                {/* VISITA */}
-                <div className="flex items-center gap-2 w-[40%]">
-                  <img
-                    src={m.LogoVisita}
-                    className="w-7 h-7 object-contain"
-                  />
-                  <span className="font-semibold text-sm truncate">
-                    {m.Visita}
-                  </span>
                 </div>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+
+        </FuturisticFrame>
 
       </div>
     </div>

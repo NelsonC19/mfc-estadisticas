@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Play } from "lucide-react";
 
 export default function Home() {
   const [matches, setMatches] = useState([]);
@@ -134,10 +135,11 @@ export default function Home() {
                         href={m.Transmi}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-2 text-xs px-3 py-1 rounded-full
+                        className="mt-2 flex items-center gap-1 text-xs px-3 py-1 rounded-full
                         bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition"
                       >
-                        ▶ Ver partido
+                        <Play size={14} />
+                        Ver partido
                       </a>
                     )}
                   </div>

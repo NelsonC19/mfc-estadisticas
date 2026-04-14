@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 export default function Fixture() {
   const [data, setData] = useState([]);
-  const [fechaActiva, setFechaActiva] = useState(1);
-  const [tab, setTab] = useState("ida");
+  const [fechaActiva, setFechaActiva] = useState(8);
+  const [tab, setTab] = useState("vuelta");
 
   const URL =
     "https://opensheet.elk.sh/1BnXAjeTz-Qhdg11ALhUrfhruAQGgs33LEtzFalz29Os/Resultados";

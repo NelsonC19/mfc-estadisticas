@@ -75,7 +75,7 @@ export default function TablaGoleadores() {
               <thead className="bg-[#1e3a8a] uppercase text-base sm:text-xs tracking-wider">
                 <tr className="text-center">
                   <th className="p-2">Pos</th>
-                  <th className="p-2"></th>
+                  <th className="p-2 gap-2"></th>
                   <th className="p-2 text-left">Jugador</th>
                   <th className="p-2">Goles</th>
                 </tr>

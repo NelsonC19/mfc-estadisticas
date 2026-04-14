@@ -66,7 +66,6 @@ export default function Home() {
 
       {/* BORDE FUTURISTA */}
       <div className="absolute inset-0 pointer-events-none">
-
         <div
           className="
             absolute inset-0 rounded-2xl
@@ -86,10 +85,31 @@ export default function Home() {
       {/* CONTENIDO */}
       <div className="bg-[#0f1f4b]/80 backdrop-blur-md rounded-2xl overflow-hidden p-4">
 
-        {/* HEADER TIPO GOLEADORES */}
-        <div className="text-cyan-400 text-center font-extrabold text-xl md:text-2xl mb-4
-        drop-shadow-[0_0_20px_rgba(0,255,255,0.3)]">
-          {title}
+        {/* 🔥 HEADER CON BRILLO ANIMADO */}
+        <div className="relative mb-5 overflow-hidden rounded-xl">
+
+          <div className="relative bg-[#1e3a8a]/80 backdrop-blur-md 
+          border-2 border-cyan-400/60 
+          rounded-xl px-4 py-2 text-center
+          shadow-[0_0_15px_rgba(0,255,255,0.4)]">
+
+            {/* ✨ BRILLO */}
+            <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+              <div className="absolute top-0 left-[-100%] w-[60%] h-full
+              bg-gradient-to-r from-transparent via-cyan-600/30 to-transparent
+              skew-x-[-20deg]
+              [animation:shimmer_2.5s_infinite]" />
+            </div>
+
+            {/* TEXTO */}
+            <span className="relative z-10 text-cyan-300 font-extrabold text-lg md:text-xl tracking-wide">
+              {title}
+            </span>
+          </div>
+
+          {/* línea glow */}
+          <div className="absolute left-1/2 -translate-x-1/2 mt-1 w-20 h-[2px] bg-cyan-400 blur-sm opacity-70"></div>
+
         </div>
 
         {children}
@@ -106,10 +126,10 @@ export default function Home() {
         {/* 🔥 ÚLTIMOS */}
         <FuturisticFrame title="Últimos Partidos">
 
-          <h2 className="text-center my-4 flex justify-center gap-2  md:text-base">
-            <span className="!font-bold !text-white !text-lg !font-[Poppins]">{ultimaFecha}</span>
-            <span className="!text-cyan-400/70 !font-bold !font-[Poppins]">-</span>
-            <span className="!text-gray-300 text-lg !font-[Poppins]">{getFechaTexto(ultimos)}</span>
+          <h2 className="text-center my-4 flex justify-center gap-2">
+            <span className="font-bold text-white text-lg">{ultimaFecha}</span>
+            <span className="text-cyan-400/70 font-bold">-</span>
+            <span className="text-gray-300 text-lg">{getFechaTexto(ultimos)}</span>
           </h2>
 
           <div className="space-y-3">
@@ -118,13 +138,11 @@ export default function Home() {
 
                 <div className="flex items-center justify-between">
 
-                  {/* LOCAL */}
                   <div className="flex flex-col items-center w-[30%]">
                     <img src={m.LogoLocal} className="w-9 h-9 object-contain mb-1" />
                     <span className="text-sm truncate">{m.Local}</span>
                   </div>
 
-                  {/* RESULTADO */}
                   <div className="flex flex-col items-center w-[40%]">
                     <div className="text-xl font-bold">
                       {m.ResLocal}-{m.ResVisita}
@@ -144,7 +162,6 @@ export default function Home() {
                     )}
                   </div>
 
-                  {/* VISITA */}
                   <div className="flex flex-col items-center w-[30%]">
                     <img src={m.LogoVisita} className="w-9 h-9 object-contain mb-1" />
                     <span className="text-sm truncate">{m.Visita}</span>
@@ -160,10 +177,10 @@ export default function Home() {
         {/* 🔥 PRÓXIMOS */}
         <FuturisticFrame title="Próximos Partidos">
 
-          <h2 className="text-center my-4 flex justify-center gap-2 text-sm md:text-base">
-            <span className="!font-bold !text-white !text-lg !font-[Poppins]">{proximaFecha}</span>
-            <span className="!text-cyan-400/70 !font-bold !font-[Poppins]">-</span>
-            <span className="!text-gray-300 text-lg !font-[Poppins]">{getFechaTexto(proximos)}</span>
+          <h2 className="text-center my-4 flex justify-center gap-2">
+            <span className="font-bold text-white text-lg">{proximaFecha}</span>
+            <span className="text-cyan-400/70 font-bold">-</span>
+            <span className="text-gray-300 text-lg">{getFechaTexto(proximos)}</span>
           </h2>
 
           <div className="space-y-3">
@@ -172,30 +189,21 @@ export default function Home() {
 
                 <div className="flex items-center justify-between">
 
-                  {/* LOCAL */}
                   <div className="flex flex-col items-center w-[30%]">
                     <img src={m.LogoLocal} className="w-9 h-9 object-contain mb-1" />
                     <span className="text-sm truncate">{m.Local}</span>
                   </div>
 
-                  {/* HORA 
                   <div className="flex flex-col items-center w-[40%]">
-                    <div className="text-xs text-cyan-300 bg-cyan-400/10 px-2 py-1 rounded-md">
-                      {horarios[i] || "—"}
+                    <div className="text-sm font-bold text-cyan-300">
+                      {horarios[i]}
                     </div>
-                  </div>*/}
-               {/* HORA */}
-                <div className="flex flex-col items-center w-[40%]">
-                  <div className="text-sm font-bold text-cyan-300">
-                    {horarios[i]}
+
+                    <div className="mt-2 text-xs px-4 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-center">
+                      Club Cumbaza
+                    </div>
                   </div>
 
-                  <div className="mt-2 text-xs px-4 py-1 rounded-full bg-cyan-400/10 text-cyan-300">
-                    Club Cumbaza
-                  </div>
-                </div>
-               
-                  {/* VISITA */}
                   <div className="flex flex-col items-center w-[30%]">
                     <img src={m.LogoVisita} className="w-9 h-9 object-contain mb-1" />
                     <span className="text-sm truncate">{m.Visita}</span>

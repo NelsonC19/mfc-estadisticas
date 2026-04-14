@@ -98,7 +98,7 @@ export default function Home() {
               <div className="absolute top-0 left-[-100%] w-[60%] h-full
               bg-gradient-to-r from-transparent via-cyan-600/30 to-transparent
               skew-x-[-20deg]
-              [animation:shimmer_2.5s_infinite]" />
+              [animation:shimmer_6s_infinite]" />
             </div>
 
             {/* TEXTO */}

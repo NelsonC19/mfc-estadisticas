@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FuturisticHeader from "../components/FuturisticHeader";
 
 export default function Tarjetas() {
   const [rojas, setRojas] = useState([]);
@@ -32,9 +33,8 @@ export default function Tarjetas() {
     <div className="min-h-screen pt-30 flex flex-col items-center py-10 px-4
       bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white">
 
-        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-7 rounded-t-xl tracking-wider drop-shadow-[0_0_20px_#000000]">
-          Tarjetas
-        </div>
+      {/* TÍTULO */}
+      <FuturisticHeader title="Tarjetas" className="w-fit min-w-[200px]" />
 
       {/* 🟥 ROJAS */}
       <div className="w-full max-w-4xl mb-10">

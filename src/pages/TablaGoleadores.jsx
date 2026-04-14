@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FuturisticHeader from "../components/FuturisticHeader";
 
 export default function TablaGoleadores() {
   const [data, setData] = useState([]);
@@ -26,9 +27,7 @@ export default function TablaGoleadores() {
       bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white"> 
 
       {/* TÍTULO */}
-        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_20px_#000000]">
-          Tabla de Goleadores
-        </div>
+      <FuturisticHeader title="Tabla de Goleadores" className="w-fit min-w-[200px]" />
 
       {/* CONTENEDOR FUTURISTA */}
       <div className="w-full max-w-3xl relative p-[2px] rounded-2xl overflow-hidden">

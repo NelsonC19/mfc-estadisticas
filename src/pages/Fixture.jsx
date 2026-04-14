@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import FuturisticHeader from "../components/FuturisticHeader";
+
 
 export default function Fixture() {
   const [data, setData] = useState([]);
@@ -58,9 +60,7 @@ export default function Fixture() {
     <div className="min-h-screen pt-30 bg-gradient-to-br from-[#0a1124] via-[#182a69] to-[#0a1124] text-white py-10 px-4">
 
       {/* 🔥 TITULO */}     
-        <div className="text-cyan-400 text-center font-extrabold text-3xl md:text-4xl pt-3 pb-10 rounded-t-xl tracking-wider drop-shadow-[0_0_20px_#000000]">
-          Fixture
-        </div>
+      <FuturisticHeader title="Fixture" className="w-fit min-w-[200px]" />
 
       {/* 🔥 TABS PREMIUM */}
       <div className="flex justify-center mb-8">

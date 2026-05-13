@@ -200,7 +200,7 @@ export default function Home() {
                     </div>
 
                     <div className="mt-2 text-xs px-4 py-1 rounded-full bg-cyan-400/10 text-cyan-300 text-center">
-                      Club Cumbaza
+                      Campo Gatica
                     </div>
                   </div>
 
